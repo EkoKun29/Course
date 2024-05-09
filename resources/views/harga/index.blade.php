@@ -1,21 +1,3 @@
-<style>
-  .icon {
-    width: 24px;
-    height: 24px;
-    vertical-align: middle;
-    margin-right: 5px;
-  }
-</style>
-
-<select>
-  <option value="php">
-    <img src="../assets/images/logos/php-logo.svg" alt="PHP" class="icon">PHP
-  </option>
-  <option value="vue">
-    <img src="../assets/images/logos/vue-js.svg" alt="Vue" class="icon">Vue
-  </option>
-</select>
-
 @extends('layouts.app')
 
 @section('content')
@@ -72,6 +54,7 @@
                             <thead>
                                 <tr class="text-bold">
                                     <th>#</th>
+                                    <th>Jenis Bahasa</th>
                                     <th>Nama Course</th>
                                     <th>Harga</th>
                                     <th class="w-1">Action</th>
@@ -81,6 +64,13 @@
                                 @foreach ($daftar as $d)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
+                                        <td data-label="Name">
+                                            <div class="d-flex py-1 align-items-center">
+                                                <span class="avatar me-2">
+                                                    <img src="{{ $d->jenis_bahasa }}" alt="Bahasa Logo" width="40" height="40">
+                                                </span>
+                                            </div>
+                                        </td>
                                         <td data-label="Name">
                                             <div class="d-flex py-1 align-items-center">
                                                 <span class="avatar me-2"

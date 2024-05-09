@@ -12,6 +12,7 @@ class CoursController extends Controller
     public function index(){
         $daftar = Cours::where('id_user', Auth::user()->id)->orderBy('id','desc')->paginate(10);
         $harga = Harga::all();
+        
         return view('course.index',compact('daftar','harga'));
     }
 
@@ -23,13 +24,13 @@ class CoursController extends Controller
     public function store(Request $request)
     {
 
-        $daftar = Cours::create([
-            'course' => $request->course,
-            'nama'   => Auth::user()->name,
-            'harga'  => $request->harga,
-            'kelas'  => $request->kelas,
-            'id_user' => Auth::user()->id,
-        ]);
+        $daftar = new Cours();
+        $daftar->jenis_bahasa = $request->bahasa;
+        $daftar->course = $request->course;
+        $daftar->nama = Auth::user()->name;
+        $daftar->harga = $request->harga;
+        $daftar->kelas = $request->kelas;
+        $daftar->id_user = Auth::user()->id;
         $daftar->save();
 
         return redirect()
@@ -42,6 +43,7 @@ class CoursController extends Controller
 
         Cours::where('id', $id)
             ->update([
+                'jenis_bahasa' => $request->bahasa,
                 'course' => $request->course,
                 'harga' => $request->harga,
                 'kelas' => $request->kelas,

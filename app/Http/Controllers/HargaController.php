@@ -17,6 +17,7 @@ class HargaController extends Controller
     {
 
         $daftar = new Harga();
+        $daftar->jenis_bahasa = $request->bahasa;
         $daftar->nama_courses = $request->nama;
         $daftar->hargas = $request->harga;
         $daftar->save();
@@ -30,6 +31,7 @@ class HargaController extends Controller
     {
         Harga::where('id', $id)
             ->update([
+                'jenis_bahasa' => $request->bahasa,
                 'nama_courses' => $request->nama,
                 'hargas' => $request->harga,
             ]);

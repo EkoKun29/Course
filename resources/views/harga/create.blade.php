@@ -8,6 +8,16 @@
             <form action="{{ route('harga-course.store') }}" method="POST">
               @csrf
                 <div class="modal-body">
+                <div class="mb-3">
+                        <label class="form-label">Jenis Bahasa</label>
+                            <select name="bahasa" class="form-control" id="bahasa" >
+                                <option disabled selected>Pilih Bahasa</option>
+                                <option value="https://img.icons8.com/dusk/64/php-logo.png">PHP</option>
+                                <option value="https://img.icons8.com/color/48/javascript--v1.png">JAVASCRIPT</option>
+                                <option value="https://img.icons8.com/color/48/html-5--v1.png">HTML</option>
+                                <option value="https://img.icons8.com/color/48/vue-js.png">VUE</option>
+                            </select>
+                    </div>
                     <div class="mb-3">
                         <label class="form-label">Nama Kelas</label>
                         <input type="text" name="nama" class="form-control" name="example-text-input"
@@ -18,16 +28,7 @@
                         <input type="number" name="harga" class="form-control" name="example-text-input"
                             placeholder="harga" required>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Jenis Bahasa</label>
-                            <select name="bahasa" class="form-control" id="bahasa" >
-                                <option disabled selected>Pilih Bahasa</option>
-                                <option value="php">PHP</option>
-                                <option value="">JavaScript</option>
-                                <option value="Sore (15.00-17.00)">HTML</option>
-                                <option value="vue">VUE</option>
-                            </select>
-                    </div>
+                    
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-outline-danger ms-auto">

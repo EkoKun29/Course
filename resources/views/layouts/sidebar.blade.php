@@ -65,7 +65,7 @@
                 </li>
 
                 <li class="sidebar-item">
-                  <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
+                  <a class="sidebar-link" href="{{ route('courses-html.index') }}" aria-expanded="false">
                     <span>
                       <img src="../assets/images/logos/html-5.svg" alt="Html" width="24" height="24">
                     </span>
