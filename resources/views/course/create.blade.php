@@ -51,29 +51,29 @@
     </div>
 </div>
 
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Objek yang berisi harga barang dari skrip sebelumnya
-        var hargaBarang = {!! json_encode($harga->pluck('hargas', 'nama_courses')->all()) !!};
-
-        // Fungsi untuk memperbarui harga saat memilih barang di dalam modal
-        function updateHargaModal() {
-            var select = document.getElementById("namaModal"); // Ambil elemen select di dalam modal
-            var hargaInput = document.getElementById("hargaModal"); // Ambil input harga di dalam modal
-            var selectedOption = select.options[select.selectedIndex]; // Ambil opsi yang dipilih
-            var namaBarang = selectedOption.value; // Ambil nilai opsi yang dipilih
-            var harga = hargaBarang[namaBarang]; // Ambil harga barang sesuai dengan nama barang yang dipilih
-
-            hargaInput.value = harga; // Set nilai input harga dengan harga yang dipilih
-        }
-
-        // Tambahkan event listener ke elemen select di dalam modal
-        document.getElementById("namaModal").addEventListener("change", updateHargaModal);
-
-        // Reset harga saat modal ditutup
-        $('#modal-report').on('hidden.bs.modal', function () {
-            document.getElementById("hargaModal").value = ''; // Set nilai input harga kosong saat modal ditutup
+@push('js')
+ <script>
+        $(document).ready(function() {
+            $('.js-example-basic-single').select2();
         });
+        // RESET FORM INPUT WHEN CREATE MODAL ACTIVE
+        $('#createDetailModal').on('show.bs.modal', function() {
+            $(this).find('form').trigger('reset');
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+    $('.js-example-basic-single').on('change', function() {
+        var selectedBarang = $(this).val();
+        var hargaBarang = getHargaByBarangName(selectedBarang);
+        $('input[name="harga"]').val(hargaBarang);
     });
-</script>
+
+    function getHargaByBarangName(barangName) {
+        var dataHarga = {!! json_encode($harga->pluck('hargas', 'nama_courses')->all()) !!};
+        return dataHarga[barangName] || 0;
+    }
+});
+
+    </script>
+@endpush

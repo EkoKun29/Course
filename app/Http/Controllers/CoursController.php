@@ -12,7 +12,7 @@ class CoursController extends Controller
     public function index(){
         $daftar = Cours::where('id_user', Auth::user()->id)->orderBy('id','desc')->paginate(10);
         $harga = Harga::all();
-        
+        // dd($harga);
         return view('course.index',compact('daftar','harga'));
     }
 
