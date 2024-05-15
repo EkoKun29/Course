@@ -38,6 +38,12 @@ class CoursController extends Controller
             ->with('success', 'Data berhasil dibuat!');
     }
 
+    public function edit(string $id){
+        $daftar = Cours::findOrFail($id);
+        $harga = Harga::all();
+        return view('course.edit',compact('daftar','harga'));
+    }
+
     public function update(Request $request, string $id)
     {
 
@@ -60,14 +66,4 @@ class CoursController extends Controller
 
         return redirect()->back()->with('success', 'Data berhasil dihapus');
     }
-    // public function destroy(string $id)
-    // {
-    //     Cours::find($id)->delete();
-
-    //     // Return response
-    //     return response()->json([
-    //         'success' => true,
-    //         'message' => 'Data berhasil dihapus!',
-    //     ]);
-    // }
 }
