@@ -19,18 +19,18 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label class="form-control-label">Nama Course</label>
-                        <select id="namaModal" class="js-example-basic-single form-control" name="course">
-                            <option value="">Pilih Nama Course</option>
-                            @foreach($harga as $course)
-                                <option value="{{ $course->nama_courses }}">{{ $course->nama_courses }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                    <label class="form-control-label">Nama Course</label>
+                    <select id="namaModal" class="js-example-basic-single form-control" name="course" onchange="tampilkanHarga()">
+                        <option value="">Pilih Nama Course</option>
+                        @foreach($harga as $course)
+                            <option value="{{ $course->nama_courses }}">{{ $course->nama_courses }}</option>
+                        @endforeach
+                    </select>
+                </div>
 
                     <div class="form-group">
                         <label class="form-control-label">Harga</label>
-                        <input type="text" class="form-control" name="harga" id="hargaModal" readonly>
+                        <input type="number" class="form-control" name="harga" id="hargaModal" readonly>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Kelas</label>
